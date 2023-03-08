@@ -1,0 +1,28 @@
+CREATE DATABASE Cinelitas;
+USE Cinelitas;
+
+CREATE TABLE salas (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  capacidad_maxima INT NOT NULL,
+  numero_sala INT NOT NULL
+);
+
+CREATE TABLE peliculas (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  nombre VARCHAR(255) NOT NULL,
+  costo_entrada INT NOT NULL,
+  fecha DATE NOT NULL,
+  sala_id INT NOT NULL,
+  FOREIGN KEY (sala_id) REFERENCES salas(id)
+);
+
+
+INSERT INTO peliculas VALUES (1,"Titanic", 3200, "02-10-23",1);
+
+INSERT INTO salas VALUES (2,130,1);
+INSERT INTO salas VALUES (3,130,2);
+INSERT INTO salas VALUES (4,130,3);
+INSERT INTO salas VALUES (5,130,4);
+INSERT INTO salas VALUES (6,130,5);
+INSERT INTO salas VALUES (7,130,6);
+INSERT INTO salas VALUES (1,130,7);

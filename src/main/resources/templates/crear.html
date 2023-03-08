@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Crear</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    </head>
+    <body>
+        <nav class="navbar navbar-dark bg-dark">
+            <div class="container-fluid">
+                <button class="btn btn-light" onclick="window.location.href = '/'">Regresar</button>
+            </div>
+        </nav>
+
+        <div class="container my-3">
+            <div class="card">
+                <div class="card-header bg-dark text-white">Agregar Película</div>
+                <div class="card-body">
+                    <form th:object="${peliculas}" th:action="@{/save}" method="POST">
+                        <input type="hidden" th:field="*{id}">
+                        <div class="form-group row">
+                            <label for="nombre" class="col-sm-2 col-form-label">Nombre</label>
+                            <div class="col-sm-10">
+                                <input type="text" th:field="*{nombre}" class="form-control" id="nombre" placeholder="Ingrese el nombre de la película">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="costo_entrada" class="col-sm-2 col-form-label">Costo de Entrada</label>
+                            <div class="col-sm-10">
+                                <input type="number" th:field="*{costo_entrada}" class="form-control" id="costo_entrada" placeholder="Ingrese el costo de la entrada">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="fecha" class="col-sm-2 col-form-label">Fecha</label>
+                            <div class="col-sm-10">
+                                <input type="date" th:field="*{fecha}" class="form-control" id="fecha">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="salas" class="col-sm-2 col-form-label">Número de Sala</label>
+                            <div class="col-sm-10">
+                                <select th:field="*{salas}" class="form-control" id="salas">
+                                    <option th:each="sala : ${salas}" th:value="${sala.id}" th:text="${sala.numero_sala}"></option>
+                                </select>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Guardar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js">
+        </body>
+        </html>
